@@ -13,6 +13,7 @@ body {
     margin-right: auto;
     margin-left: auto;
     margin-top: 60px;
+    max-width: 540px
   }
   
   .links-container {
