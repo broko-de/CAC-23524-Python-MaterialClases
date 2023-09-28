@@ -77,5 +77,72 @@ function getMovie(){
     // console.log(movie4);
 }
 
-getMovie();
-console.log(movie1);
+// getMovie();
+// console.log(movie1);
+
+// FUNCIONES QUE RETORNAN UN VALOR
+function parseRatingToStars(rating){
+    let response;
+    if(rating>10){
+        return 'Este valor no corresponde';
+    }
+    switch (parseInt(rating)) {
+        case 5:
+            response = '⭐⭐⭐⭐⭐';
+            break;
+        case 4:
+            response = '⭐⭐⭐⭐';
+            break;
+        case 3:
+            response = '⭐⭐⭐';
+            break;
+        case 2:
+            response = '⭐⭐';
+            break;
+        case 1:
+            response = '⭐';
+            break;
+        default:
+            response = '---';
+            break;
+    }
+    return response;    
+}
+
+// let stars = parseRatingToStars(3);
+// console.log('El rating para esta pelicula: ', stars);
+// console.log('El rating para esta pelicula: ', parseRatingToStars(12));
+// console.log(checkWatchMovie2(30,false));
+
+function checkWatchMovie2(age,hasTicket){
+    //asignacion de un valor de acuerdo a la comprobación de una condición
+    // let message = (age>=13 && hasTicket)?
+    //                 'Puedes ver la pelicula':
+    //                 'No cumples con los requisitos 😣';
+    // return message;
+    return (age>=13 && hasTicket)?'Puedes ver la pelicula':'No cumples con los requisitos 😣';
+    // Es equivalente a esto
+    // if (age>=13 && hasTicket){
+    //     return 'Puedes ver la pelicula';
+    // }else{
+    //     return 'No cumples con los requisitos 😣';
+    // }
+}
+
+// console.log(checkWatchMovie2(30,false));
+
+// sellTicketFor(5); error
+
+// FUNCIONES FLECHA - ARROW FUNCTIONS
+// con const, prevenimos que sea reasignada otro valor a la variable sellTicketFor
+const sellTicketFor = (numberTickets) => {
+    for(let i=1;i<=numberTickets;i++){
+        console.log('Ticket vendido nro:', i);
+    }
+    console.log('Se vendieron todos los tickets con FOR');
+}
+
+console.log(typeof(sellTicketFor));
+sellTicketFor(5);
+// sellTicketFor= 10;
+// sellTicketFor(2);
