@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaC-Movies-VUE</title>
+    <link rel="cac-movies icon" href="./static/img/favicon.ico" type="image/x-icon">
+    
+    <!-- Agregar googlefonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+
+    <!-- Agregar fontawesome -->
+    <script src="https://kit.fontawesome.com/f7fb471b65.js" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="static/css/style.css">
+    
+</head>
+<body>
+    <div id="app">
+        <!-- <h1>{{message}}</h1> -->
+        <main>
+            <!-- elemento define la sección en un documento. -->
+            <section id="banner" class="d-flex">
+                <!-- <div class="banner-card container" v-html="card"> -->
+                <div class="banner-card container">
+                    <h1>{{title}}</h1>
+                    <h2>{{subtitle}}</h2>
+                    <a v-bind:href="btnHref" v-bind:class="btnClass" v-show="login">Registrate</a>
+                </div>
+            </section>
+            <section id="search" class="container">
+                <h2 class="search-title">¿Que estás buscando?</h2>
+                <input type="text" class="input-search" placeholder="Buscar..." v-model="message">
+            </section>
+            <h2>{{message}}</h2>
+            <section id="popular" class="container">
+                <h2 class="h2-subtitle">Las tendencias de hoy</h2>
+                <div id="popular-list" class="movies-grid">
+                    <div class="movie-item" v-for="movie in movies">
+                        <a href="detail-movie.html">
+                            <img v-bind:src="movie.poster" alt="" class="movie-item-img">
+                            <div class="movie-item-detail">
+                                <p class="movie-item-detail-title">{{movie.name}}</p>
+                                <p class="movie-item-detail-subtitle" v-if="movie.detail !='' ">{{movie.detail}}</p>
+                                <p class="movie-item-detail-subtitle" v-else=>SIN DETALLES</p>
+                            </div>
+                        </a>
+                    </div>                    
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./static/js/index.js"></script>
+</body>

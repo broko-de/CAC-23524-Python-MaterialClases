@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaC-Movies-VUE</title>
+    <link rel="cac-movies icon" href="./static/img/favicon.ico" type="image/x-icon">
+    
+    <!-- Agregar googlefonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+
+    <!-- Agregar fontawesome -->
+    <script src="https://kit.fontawesome.com/f7fb471b65.js" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="static/css/style.css">
+    
+</head>
+<body>
+    <div id="app">
+        <main>
+            <br><br>            
+            <section id="popular" class="container">
+                <div class="d-flex">
+                    <input type="text" placeholder="Pelicula" v-model="newName">
+                    <input type="number" placeholder="Rating" v-model="newRating">
+                    <button v-on:click="addMovie()">Agregar</button>
+                </div>
+                <h2 class="h2-subtitle">Listado de peliculas</h2>
+                <ul class="movie-list">
+                    <li v-for="movie in movies">
+                        {{ movie.name }} - {{ movie.rating }}
+                    </li>
+                </ul>
+            </section>
+
+        </main>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./static/js/events.js"></script>
+</body>
