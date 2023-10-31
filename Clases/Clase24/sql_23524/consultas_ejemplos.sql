@@ -173,3 +173,32 @@ LEFT JOIN reviews r ON m.id_movie = r.id_movie;
 SELECT r.reviewer_name, r.rating, r.comment, COALESCE(m.title, 'Sin película asociada') AS movie_title
 FROM reviews r
 RIGHT JOIN movies m ON r.id_movie = m.id_movie;
+
+--CONSULTAS
+Encontrar titulo de la pelicula, nombre del critico y su comentario
+SELECT m.title, r.reviewer_name, r.comment
+FROM movies AS m
+JOIN reviews AS r ON m.id_movie = r.id_movie;
+
+SELECT m.title, r.reviewer_name, r.comment
+FROM reviews AS r
+INNER JOIN movies AS m ON m.id_movie = r.id_movie
+WHERE r.rating >=4.7;
+
+Encuentra el promedio de calificacion por pelicula, agregar numero de revisiones
+SELECT m.title, AVG(r.rating) as average_rating, COUNT(r.id_review) as number_reviews
+FROM movies AS m
+JOIN reviews AS r ON m.id_movie = r.id_movie
+GROUP BY m.id_movie;
+
+Nombre de los criticos y la cantidad de criticas
+SELECT r.reviewer_name, COUNT(r.id_review) as number_reviews
+FROM reviews r
+GROUP BY r.reviewer_name;
+
+Encuentra las películas junto con sus géneros:
+SELECT m.title, GROUP_CONCAT(g.name SEPARATOR ',') as genres
+FROM movies m
+INNER JOIN movies_genres mg ON m.id_movie = mg.id_movie
+INNER JOIN genres g ON mg.id_genre = g.id_genre
+GROUP BY m.title;
